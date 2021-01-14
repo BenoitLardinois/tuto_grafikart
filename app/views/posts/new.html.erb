@@ -1,0 +1,29 @@
+<!-- La vue new -->
+<h1> Voici la vue new !</h1>
+
+<br><br>
+
+<h1>Créer un nouveau article</h1>
+
+<br><br>
+
+
+<!-- 1) Pour que le formulaire marche il faut créer une antitée (controller => new) -->
+<%= form_for @post do |f| %>
+  <div class="form-group">
+    <label>Titre de l'article</label>
+    <%= f.text_field :name, class: 'form-controller' %>
+  </div>
+
+  <div class="form-group">
+    <label>Contenu de l'article</label>
+    <%= f.text_area :content, class: 'form-controller' %>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Créer l'article</button>
+  </div>
+<% end %>
+
+<!-- 1) Mainteant il faut créer l'action create dans le controller -->
+

@@ -1,0 +1,42 @@
+<!-- La vue edit -->
+<h1> Voici la vue edit !</h1>
+
+<br><br>
+
+<h1>Editer l'article</h1>
+
+<br><br>
+<!-- 5) Montrer une message d'erreur comme ceci-->
+<% if @post.invalid? %>
+  <div class="alert alert-danger">
+    <% @post.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  </div>
+<% end %>
+
+<!-- 1) form_for va créer un formulaire qui correspond à mon artcile (grâce à @post) et prend ensuite en paramaètre un block.
+Afficher 'f'.text_field' qui prend en paramètre l'attribut qu'on souhaite modifier (:name) -->
+<%= form_for @post do |f| %>
+  <div class="form-group">
+    <label>Titre de l'article</label>
+    <%= f.text_field :name, class: 'form-controller' %>
+  </div>
+
+<!--6) Ci dessous nous rajoutons un form-group pour le slug. -->,
+  <div class="form-group">
+    <label>URL de l'article</label>
+    <%= f.text_field :slug, class: 'form-controller' %>
+  </div>
+
+  <div class="form-group">
+    <label>Contenu de l'article</label>
+    <%= f.text_area :content, class: 'form-controller' %>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Modifier l'article</button>
+  </div>
+<% end %>
+
+<!-- 1) Mnt nous devons créer la méthode update -->

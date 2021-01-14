@@ -1,0 +1,33 @@
+<!-- La vue index -->
+<h1>La vue index!</h1>
+
+<br><br>
+
+<h1>Articles</h1>
+
+<%= @posts.inspect %>
+
+<br><br><br><br><br>
+
+<!-- 1)Affichage de chaques names et content (se trouvant  BDD) -->
+<% @posts.each do |post| %>
+  <h2><%= post.name %></h2>
+  <p><%= post.content %></p>
+
+<!-- 1)Si dessous nous mettons le lien vers la conultation d'un article post_path (s'aider en regardant les routes) et lui transmettre l'ide de l'article (post.id). Une fois qu'on clique dessus nous sommes rediriger vers l'action show du controlleur-->
+  <p>
+    <a href="<%= post_path(post.id) %>" class="btn btn-primary">Lire la suite</a>
+<!-- 1)Permet de créer un bouton edit directement depuis la vue index et qui redirige vers la vues edit -->
+    <a href="<%= edit_post_path(post.id) %>" class="btn btn-dark">Editer</a>
+<!-- 1)Permet de créer un bouton delete + un data-confirm + la méthode data-delete directement depuis la vue index -->
+    <a href="<%= post_path(post.id) %>" class="btn btn-danger" data-confirm="Etes vous sûr ?" data-method="DELETE">Supprimer</a>
+<!-- 1)Puis mnt il faut gerer cette action destroy au niveau du controller -->
+  </p>
+<% end %>
+
+<br><br>
+
+<!-- 1)Création d'un bouton qui redirige sur la vue qui permet de créer un nouveau article -->
+<p>
+  <a href="<%= new_post_path %>" class="btn btn-success">Créer un nouveau article!</a>
+</p>

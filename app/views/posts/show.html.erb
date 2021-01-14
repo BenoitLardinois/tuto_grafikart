@@ -1,0 +1,10 @@
+<!-- La vue show -->
+<h1> Voici la vue show !</h1>
+
+<h1><%= @post.name %></h1>
+<p><%= @post.content %></p>
+
+<!-- 1) Création d'un lien pour revenir en arrière + le lien vers la vue index (sans params)-->
+<p>
+  <a href="<%= posts_path %>" class="btn btn-primary">Lien pour revenir aux articles</a>
+</p>
